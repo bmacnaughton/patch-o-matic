@@ -27,7 +27,7 @@ But I'm guessing/hoping that, if the --loader and --import options are fixed to 
 problem will go away.
 
 ## script that modifies module.prototype._compile
-- `req-loader-js` shows that executing user-app.js with the request-based loader works
+- `req-loader-js` shows that executing user-app.js with the require-based loader works
 
 ## scripts that use the --loader option
 - `esm-loader-js` shows that executing user-app.js segfaults on a specific .node file
