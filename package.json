@@ -11,7 +11,12 @@
     "esm-loader-mjs": "node --loader ./dist/esm-loader-compat.mjs user-app.mjs",
 
     "esm-loader-js-no-segfault": "SEGFAULT=no node --loader ./dist/esm-loader-compat.mjs user-app.js",
-    "esm-loader-mjs-no-segfault": "SEGFAULT=no node --loader ./dist/esm-loader-compat.mjs user-app.mjs"
+    "esm-loader-mjs-no-segfault": "SEGFAULT=no node --loader ./dist/esm-loader-compat.mjs user-app.mjs",
+
+    "esm-import-js": "node --import ./dist/esm-loader-compat.mjs user-app.js",
+    "esm-import-mjs": "node --import ./dist/esm-loader-compat.mjs user-app.mjs",
+    "esm-import-js-no-segfault": "SEGFAULT=no node --import ./dist/esm-loader-compat.mjs user-app.js",
+    "esm-import-mjs-no-segfault": "SEGFAULT=no node --import ./dist/esm-loader-compat.mjs user-app.mjs"
   },
   "author": "",
   "license": "ISC",

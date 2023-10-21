@@ -2,8 +2,6 @@
  * This file contains the loader that is used as an argument to register() for
  * node >= 20.6.0.
  */
-debugger;
-
 import { promises as fsp } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -63,7 +61,7 @@ export async function load(url, context, nextLoad) {
     //const { source: rawSource } = await nextLoad(url, {...context, format: context.format || type }, nextLoad);
 
     const basename = path.basename(filename);
-    return { format: format, source: stuffToAdd + source, shortCircuit: true };
+    return { format: format, source, shortCircuit: true };
   } catch (err) {
     msg = `${msg}; using original code`;
     console.error({ msg, filename, err });
