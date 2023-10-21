@@ -1,0 +1,23 @@
+{
+  "name": "patch-o-matic",
+  "version": "1.0.0",
+  "description": "exploring patching with node 20",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'see package.json for options' && exit 1",
+    "req-loader-js": "node -r ./dist/req-loader.js user-app.js",
+
+    "esm-loader-js": "node --loader ./dist/esm-loader-compat.mjs user-app.js",
+    "esm-loader-mjs": "node --loader ./dist/esm-loader-compat.mjs user-app.mjs",
+
+    "esm-loader-js-no-segfault": "SEGFAULT=no node --loader ./dist/esm-loader-compat.mjs user-app.js",
+    "esm-loader-mjs-no-segfault": "SEGFAULT=no node --loader ./dist/esm-loader-compat.mjs user-app.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@contrast/agent-lib": "^8.2.0",
+    "@contrast/distringuish": "^4.4.0",
+    "semver": "^7.5.4"
+  }
+}
