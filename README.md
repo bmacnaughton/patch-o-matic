@@ -11,3 +11,7 @@ $ npm install
 
 npm run $ONE_OF_THE_SCRIPTS_IN_PACKAGE_JSON
 ```
+
+# limitations
+
+This is only tested using linux.
