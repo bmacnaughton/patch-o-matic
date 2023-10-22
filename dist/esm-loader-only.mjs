@@ -1,13 +1,28 @@
-import {fileURLToPath} from 'node:url';
+import {fileURLToPath, pathToFileURL} from 'node:url';
 import {promises as fsp} from 'node:fs';
 import path from 'node:path';
 import {createRequire} from 'node:module';
 
 const repo = fileURLToPath(new URL('../', import.meta.url));
-//
-// This function gets called only if this is being invoked via --loader. If not,
-// the export is undefined.
-//
+
+export async function resolve(specifier, context, nextResolve) {
+  console.debug(`[--loader resolve() ${specifier}]`);
+  if (specifier.endsWith('.node')) {
+
+  const req = createRequire(import.meta.url);
+    const source = req(specifier);
+    return {
+      source,
+      format: 'commonjs',
+      shortCircuit: true,
+      url: pathToFileURL(specifier).href,
+    }
+    debugger;
+  }
+
+  return nextResolve(specifier);
+}
+
 export async function load(url, context, nextLoad) {
   const {format} = context;
 
