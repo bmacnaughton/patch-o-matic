@@ -7,6 +7,8 @@
     "test": "echo 'see package.json for options' && exit 1",
     "req-loader-js": "node -r ./dist/req-loader.js user-app.js",
 
+    "only": "SEGFAULT=no node --loader ./dist/esm-loader-only.mjs user-app.mjs",
+
     "esm-loader-js": "node --loader ./dist/esm-loader-compat.mjs user-app.js",
     "esm-loader-mjs": "node --loader ./dist/esm-loader-compat.mjs user-app.mjs",
 
