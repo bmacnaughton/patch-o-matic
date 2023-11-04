@@ -5,7 +5,7 @@ import {createRequire} from 'node:module';
 
 const repo = fileURLToPath(new URL('../', import.meta.url));
 
-export async function resolve(specifier, context, nextResolve) {
+export async function _resolve(specifier, context, nextResolve) {
   console.debug(`[--loader resolve() ${specifier}]`);
   if (specifier.endsWith('.node')) {
 
@@ -34,6 +34,16 @@ export async function load(url, context, nextLoad) {
 
   if (format !== 'commonjs' && format !== 'module') {
     console.debug({ load: url, format }, 'Skipping rewrite; loading original code');
+    if (path.extname(filename) === '.node') {
+      const req = createRequire(import.meta.url);
+      const source = req(filename);
+      return {
+        //source: `require("module").createRequire("${url}")("${filename}");`,
+        source,
+        format: 'commonjs',
+        shortCircuit: true,
+      };
+    }
     return nextLoad(url, context);
   }
 

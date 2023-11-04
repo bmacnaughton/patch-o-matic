@@ -44,3 +44,8 @@ problem will go away.
 # limitations
 
 This is only tested using linux.
+
+# (remove before committing) debugging breadcrumbs
+
+break module_wrap.cc:75 (destructor)
+break module_wrap.cc:362 jlh module

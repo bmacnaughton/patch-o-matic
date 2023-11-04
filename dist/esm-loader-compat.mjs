@@ -156,11 +156,11 @@ async function load(url, context, nextLoad) {
   if (format !== 'commonjs' && format !== 'module') {
     console.debug({ load: url, format }, 'Skipping rewrite; loading original code');
     // new hack start
-    if (path.extname(filename) === '.node') {
-      const req = createRequire(import.meta.url);
-      const m = req(filename);
-      return { format, source: m, shortCircuit: true };
-    }
+    //if (path.extname(filename) === '.node') {
+    //  const req = createRequire(import.meta.url);
+    //  const m = req(filename);
+    //  return { format, source: m, shortCircuit: true };
+    //}
     // new hack end
     return nextLoad(url, context);
   }
