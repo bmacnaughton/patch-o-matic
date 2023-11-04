@@ -5,20 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo 'see package.json for options' && exit 1",
-    "req-loader-js": "node -r ./dist/req-loader.js user-app.js",
-
-    "only": "SEGFAULT=no node --loader ./dist/esm-loader-only.mjs user-app.mjs",
-
-    "esm-loader-js": "node --loader ./dist/esm-loader-compat.mjs user-app.js",
-    "esm-loader-mjs": "node --loader ./dist/esm-loader-compat.mjs user-app.mjs",
-
-    "esm-loader-js-no-segfault": "SEGFAULT=no node --loader ./dist/esm-loader-compat.mjs user-app.js",
-    "esm-loader-mjs-no-segfault": "SEGFAULT=no node --loader ./dist/esm-loader-compat.mjs user-app.mjs",
-
-    "esm-import-js": "node --import ./dist/esm-loader-compat.mjs user-app.js",
-    "esm-import-mjs": "node --import ./dist/esm-loader-compat.mjs user-app.mjs",
-    "esm-import-js-no-segfault": "SEGFAULT=no node --import ./dist/esm-loader-compat.mjs user-app.js",
-    "esm-import-mjs-no-segfault": "SEGFAULT=no node --import ./dist/esm-loader-compat.mjs user-app.mjs"
+    "segfault": "node --import ./dist/esm-register.mjs  user-x.js"
   },
   "author": "",
   "license": "ISC",

@@ -21,23 +21,10 @@ export function getStats() {
   return stats;
 }
 
-let port;
-export async function initialize(obj) {
-  console.log('initialized() called')
-  obj?.hooksPort.postMessage('initialized');
-  port = obj?.hooksPort;
-}
-
-export async function resolve(specifier, context, nextResolve) {
-  console.log(`[--import resolve() ${specifier}]`);
-  return nextResolve(specifier);
-}
-
 export async function load(url, context, nextLoad) {
   const { format } = context;
-  port?.postMessage({ load: url, format });
   const filename = url.startsWith('file://') ? fileURLToPath(url) : url;
-  console.log(`[--import register() hook, ${filename}]`);
+  console.log(`[--import register() hook, ${filename} (${format})]`);
 
   if (format !== 'commonjs' && format !== 'module') {
     console.debug({ load: url, format }, 'Skipping rewrite; loading original code');
