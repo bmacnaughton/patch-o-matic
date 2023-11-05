@@ -11,16 +11,6 @@ import path from 'node:path';
 const esmConfig = {};
 export { esmConfig as config };
 
-// keep stats
-const stats = {
-  skipped: 0,
-  rewritten: 0,
-};
-
-export function getStats() {
-  return stats;
-}
-
 export async function load(url, context, nextLoad) {
   const { format } = context;
   const filename = url.startsWith('file://') ? fileURLToPath(url) : url;
@@ -32,7 +22,7 @@ export async function load(url, context, nextLoad) {
     if (path.extname(filename) === '.node') {
       const req = createRequire(import.meta.url);
       const m = req(filename);
-      return { format, source: m, shortCircuit: true };
+      return { format, source: undefined, shortCircuit: true };
     }
     // new hack end
     return nextLoad(url, context);
@@ -48,7 +38,7 @@ export async function load(url, context, nextLoad) {
     //const { source: rawSource } = await nextLoad(url, {...context, format: context.format || type }, nextLoad);
 
     const basename = path.basename(filename);
-    return { format: format, source, shortCircuit: true };
+    return { format, source: undefined, shortCircuit: true };
   } catch (err) {
     msg = `${msg}; using original code`;
     console.error({ msg, filename, err });
